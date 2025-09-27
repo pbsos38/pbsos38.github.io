@@ -1180,7 +1180,23 @@ Please follow up with this lead within 24 hours.
             // For demo purposes, we'll just log it and simulate a delay
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    console.log('Email would be sent with content:', emailContent);
+                    // console.log('Email would be sent with content:', emailContent);
+                    fetch("https://example.com/api/endpoint", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json"
+                          },
+                          body: JSON.stringify(emailContent) // only needed for POST/PUT/PATCH
+                        })
+                        .then(response => {
+                          if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                          }
+                          return response.json(); // parse JSON response
+                        })
+                        .then(result => resolve(result))
+                        .catch(error => reject(error));
+                      });
                     resolve();
                 }, 1500);
             });
