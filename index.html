@@ -38,6 +38,20 @@
             padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+        }
+        .logo-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-center img {
+            width: 36px;
+            height: 36px;
         }
 
         .logo {
@@ -521,6 +535,10 @@
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             }
 
+            .logo-center {
+                display: none;
+            }
+
             .nav-menu.active {
                 display: flex;
             }
@@ -618,7 +636,10 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <div class="logo">Nile Bytes</div>
+            <div class="logo left">Nile Bytes</div>
+            <div class="logo-center">
+                <img src="/favicon.svg" alt="Nile Bytes Logo">
+            </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
